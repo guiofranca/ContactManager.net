@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{30AB5E42-0CFC-4C11-B623-F6A2CEF9286A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager.Domain", "src\ContactManager.Domain\ContactManager.Domain.csproj", "{3A7D8C31-E34D-4DED-BB7C-CA5089ECABE9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ContactManager.Data", "ContactManager.Data", "{5DAEFCB6-F270-4852-BD2F-3B16D85B660F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mysql", "src\ContactManager.Data\Mysql\Mysql.csproj", "{B4FAB4B7-0FAE-4352-8304-96DC2CD97E38}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A7D8C31-E34D-4DED-BB7C-CA5089ECABE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A7D8C31-E34D-4DED-BB7C-CA5089ECABE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A7D8C31-E34D-4DED-BB7C-CA5089ECABE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A7D8C31-E34D-4DED-BB7C-CA5089ECABE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4FAB4B7-0FAE-4352-8304-96DC2CD97E38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4FAB4B7-0FAE-4352-8304-96DC2CD97E38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4FAB4B7-0FAE-4352-8304-96DC2CD97E38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4FAB4B7-0FAE-4352-8304-96DC2CD97E38}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3A7D8C31-E34D-4DED-BB7C-CA5089ECABE9} = {30AB5E42-0CFC-4C11-B623-F6A2CEF9286A}
+		{5DAEFCB6-F270-4852-BD2F-3B16D85B660F} = {30AB5E42-0CFC-4C11-B623-F6A2CEF9286A}
+		{B4FAB4B7-0FAE-4352-8304-96DC2CD97E38} = {5DAEFCB6-F270-4852-BD2F-3B16D85B660F}
+	EndGlobalSection
+EndGlobal
