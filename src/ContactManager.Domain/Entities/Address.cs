@@ -9,7 +9,7 @@ public class Address : OwnedByContactEntity
     public string? Number { get; set; }
     public string? Neighborhood { get; set; }
     public string? PostalCode { get; set; }
-    public Contact Contact { get; set; }
+    public Contact? Contact { get; set; }
 
     public Address(
         string nickname,
@@ -17,7 +17,7 @@ public class Address : OwnedByContactEntity
         string? number,
         string? neighborhood,
         string? postalCode,
-        Contact contact
+        int contactId
     )
     {
         Nickname = nickname;
@@ -25,6 +25,6 @@ public class Address : OwnedByContactEntity
         Number = number;
         Neighborhood = neighborhood;
         PostalCode = postalCode;
-        Contact = contact;
+        ContactId = contactId;
     }
 }

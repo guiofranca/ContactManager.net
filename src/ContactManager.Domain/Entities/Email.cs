@@ -5,14 +5,14 @@ using ContactManager.Domain.Entities.Shared;
 public class Email : OwnedByContactEntity 
 {
     public string Address { get; set; }
-    public Contact Contact { get; set; }
+    public Contact? Contact { get; set; }
 
     public Email(
         string address,
-        Contact contact
+        int contactId
     )
     {
         Address = address;
-        Contact = contact;
+        ContactId = contactId;
     }
 }

@@ -6,15 +6,15 @@ public class Phone : OwnedByContactEntity
 {
     public string Name { get; set; }
     public string Number { get; set; }
-    public Contact Contact { get; set; }
+    public Contact? Contact { get; set; }
 
     public Phone(
         string name,
         string number,
-        Contact contact)
+        int contactId)
     {
         Name = name;
         Number = number;
-        Contact = contact;
+        ContactId = contactId;
     }
 }
