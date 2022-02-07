@@ -1,4 +1,7 @@
 using ContactManager.Data.Mysql.Context;
+using ContactManager.Data.Mysql.Repositories;
+using ContactManager.Domain.Repositories.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -9,7 +12,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<DataContext>();
-//builder.Services.AddDbContext<DataContext>(options);
+builder.Services.AddScoped<DataContext, DataContext>();
+//builder.Services.AddScoped<IContactRepository, ContactRepository>();
 
 var app = builder.Build();
 
