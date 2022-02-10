@@ -1,5 +1,6 @@
 using ContactManager.Data.Mysql.Context;
 using ContactManager.Data.Mysql.Repositories;
+using ContactManager.Domain.Entities;
 using ContactManager.Domain.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +14,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<DataContext>();
 builder.Services.AddScoped<DataContext, DataContext>();
-//builder.Services.AddScoped<IContactRepository, ContactRepository>();
+builder.Services.AddScoped<IContactRepository, ContactRepository>();
+builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+builder.Services.AddScoped<IEmailRepository, EmailRepository>();
+builder.Services.AddScoped<IPhoneRepository, PhoneRepository>();
 
 var app = builder.Build();
 
