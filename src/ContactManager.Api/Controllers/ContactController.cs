@@ -103,7 +103,7 @@ namespace ContactManager.Api.Controllers
         }
 
         // GET api/<ContactController>/trashed
-        [HttpGet("/trashed")]
+        [HttpGet("trashed")]
         public async Task<ActionResult<IEnumerable<ContactDTO>>> GetTrashed()
         {
             IEnumerable<Contact> contacts = await _contactRepository.AllWithTrashed();
