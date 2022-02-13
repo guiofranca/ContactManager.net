@@ -6,4 +6,5 @@ namespace ContactManager.Domain.Repositories.Interfaces.Shared;
 public interface IOwnedByContactRepository<T> where T : OwnedByContactEntity
 {
     Task<IEnumerable<T>> FindByContact(Contact c);
+    Task<IEnumerable<T>> FindByContact(int id);
 }

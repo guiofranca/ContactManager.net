@@ -13,4 +13,7 @@ public interface IBaseRepository<T> where T : BaseEntity
     Task<IEnumerable<T>> All();
     Task<T> Update(T entity);
     //List<T> Update(List<T> entities);
+    Task<T> Restore(T entity);
+    Task<T> FindWithTrashed(int id);
+    Task<IEnumerable<T>> AllWithTrashed();
 }

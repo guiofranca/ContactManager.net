@@ -13,7 +13,15 @@ public abstract class OwnedByContactRepository<T> : BaseRepository<T>, IOwnedByC
     public async Task<IEnumerable<T>> FindByContact(Contact contact)
     {
         return await Db.Set<T>()
-            .Where(tes => tes.ContactId == contact.Id)
+            .Where(t => t.ContactId == contact.Id)
+            .AsNoTracking()
+            .ToListAsync();
+    }
+
+    public async Task<IEnumerable<T>> FindByContact(int id)
+    {
+        return await Db.Set<T>()
+            .Where(t => t.ContactId == id)
             .AsNoTracking()
             .ToListAsync();
     }

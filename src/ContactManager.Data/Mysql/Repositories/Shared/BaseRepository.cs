@@ -13,15 +13,21 @@ public abstract class BaseRepository<T> : IBaseRepository<T> where T : BaseEntit
     {
         Db = dataContext;
     }
+
     public async Task<IEnumerable<T>> All()
     {
         return await Db.Set<T>()
+            .Where(t => t.DeletedAt == null)
             .AsNoTracking()
             .ToListAsync();
     }
 
     public async Task<T> Create(T entity)
     {
+        entity.CreatedAt = DateTime.Now;
+        entity.UpdatedAt = DateTime.Now;
+        entity.DeletedAt = null;
+
         Db.Add(entity);
         await Db.SaveChangesAsync();
         return entity;
@@ -31,7 +37,9 @@ public abstract class BaseRepository<T> : IBaseRepository<T> where T : BaseEntit
     {
         T entity = await Db.Set<T>().FindAsync(id);
         if(entity != null) {
-            Db.Set<T>().Remove(entity);
+            entity.DeletedAt = DateTime.Now;
+            Db.Set<T>().Update(entity);
+            await Db.SaveChangesAsync();
             return true;
         }
         return false;
@@ -39,13 +47,40 @@ public abstract class BaseRepository<T> : IBaseRepository<T> where T : BaseEntit
 
     public async Task<T> Find(int id)
     {
-        return await Db.Set<T>().FindAsync(id);
+        return await Db.Set<T>()
+            .Where(t => t.DeletedAt == null)
+            .FirstOrDefaultAsync(t => t.Id == id);
     }
 
     public async Task<T> Update(T entity)
     {
+        entity.UpdatedAt = DateTime.Now;
         Db.Set<T>().Update(entity);
         await Db.SaveChangesAsync();
         return entity;
+    }
+
+    public async Task<T> Restore(T entity)
+    {
+        if(entity.DeletedAt != null) {
+            entity.DeletedAt = null;
+            entity.UpdatedAt = DateTime.Now;
+            Db.Set<T>().Update(entity);
+            await Db.SaveChangesAsync();
+        }
+        return entity;
+    }
+
+    public async Task<T> FindWithTrashed(int id)
+    {
+        return await Db.Set<T>()
+            .FirstOrDefaultAsync(t => t.Id == id);
+    }
+
+    public async Task<IEnumerable<T>> AllWithTrashed()
+    {
+        return await Db.Set<T>()
+            .AsNoTracking()
+            .ToListAsync();
     }
 }
